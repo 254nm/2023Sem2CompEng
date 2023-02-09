@@ -1,5 +1,6 @@
 package me.txmc.school.task.tasks;
 
+import lombok.RequiredArgsConstructor;
 import me.txmc.school.Main;
 import me.txmc.school.task.AbstractTask;
 
@@ -18,28 +19,21 @@ public class VariablesAndDataTypesTask implements AbstractTask {
         System.out.print("Please enter your height (Centimeters): ");
         int height = scanner.nextInt();
         System.out.print("Please enter your favourite colour: ");
-        String colour = scanner.next();
+        String colour = scanner.nextLine();
         System.out.print("Please enter your favourite animal: ");
-        String animal = scanner.next();
+        String animal = scanner.nextLine();
         Main.clearTerm();
         Person person = new Person(name,age,height,colour,animal);
         System.out.println(person);
     }
 
+    @RequiredArgsConstructor
     private static class Person {
         private final String name;
         private final int age;
         private final int height;
         private final String favColour;
         private final String favAnimal;
-
-        public Person(String name, int age, int height, String favColour, String favAnimal) {
-            this.name = name;
-            this.age = age;
-            this.height = height;
-            this.favColour = favColour;
-            this.favAnimal = favAnimal;
-        }
 
         @Override
         public String toString() {

@@ -14,6 +14,7 @@ repositories {
 }
 
 dependencies {
+    compileOnly("org.projectlombok:lombok:1.18.24")
     annotationProcessor("org.projectlombok:lombok:1.18.24")
 }
 tasks.jar {
@@ -22,9 +23,6 @@ tasks.jar {
             "Main-Class" to "me.txmc.school.Main"
         )
     }
-}
-sourceSets.main {
-    java.srcDirs("src/main/java")
 }
 
 
