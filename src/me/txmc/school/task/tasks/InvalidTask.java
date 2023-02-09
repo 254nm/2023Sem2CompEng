@@ -12,6 +12,7 @@ public class InvalidTask implements AbstractTask {
     @Override
     public void execute(String[] args) throws Throwable {
         System.out.println("The task you selected does not exist. Please try again");
+        Main.clearTerm();
         new Main().init(args);
     }
 }

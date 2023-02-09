@@ -8,13 +8,18 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
-    private HashMap<Integer, AbstractTask> tasks = new HashMap<Integer, AbstractTask>() {{
+    private HashMap<Integer, AbstractTask> tasks = new HashMap<>() {{
         put(1, new IOTask());
+        put(2, new VariablesAndDataTypesTask());
+        put(3, new OperatorsTask());
+        put(4, new ConditionsTask());
+        put(5, new LoopsTask());
     }};
     public static void main(String[] args) throws Throwable {
         new Main().init(args);
     }
     public void init(String[] args) {
+
         StringBuilder sb = new StringBuilder();
         sb.append("Please select a task from the list: ");
         tasks.forEach((i, t) -> sb.append(i).append(" (").append(t.getClass().getSimpleName()).append("), "));
@@ -28,7 +33,7 @@ public class Main {
                 System.out.printf("The following output is from task %d\n", i);
                 task.execute(args);
             } catch (Throwable e) {
-                System.out.printf("The task failed due to %s. Please see the stacktrace below for more info", e.getClass().getSimpleName());
+                System.out.printf("The task failed due to %s. Please see the stacktrace below for more info\n", e.getClass().getSimpleName());
                 e.printStackTrace();
             }
         }, () -> {
@@ -36,7 +41,7 @@ public class Main {
             init(args);
         });
     }
-    private Optional<Integer> parseInt(String input) {
+    public static Optional<Integer> parseInt(String input) {
         try {
             return Optional.of(Integer.parseInt(input));
         } catch (NumberFormatException nfe) {
